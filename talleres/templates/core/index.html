@@ -13,17 +13,32 @@
       rel="stylesheet"
     />
 
-    <title>Talleres</title>
+    <title>Talleres Adulto Mayor</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}"
+      rel="stylesheet"
+    />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css'%}"/>
-    <link rel="stylesheet" href="{% static 'assets/css/templatemo-villa-agency.css'%}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css'%}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/templatemo-villa-agency.css'%}"
+    />
     <link rel="stylesheet" href="{% static 'assets/css/owl.css'%}" />
     <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
     <!-- 
 
 TemplateMo 591 villa agency
@@ -50,14 +65,24 @@ https://templatemo.com/tm-591-villa-agency
         <div class="row">
           <div class="col-lg-8 col-md-8">
             <ul class="info">
-              <li><i class="fa fa-envelope"></i> municipalidadpuentealto@mpuentealto.cl</li>
-              <li><i class="fa fa-map"></i>Avenida Concha y Toro N°1820, Puente Alto, Chile</li>
+              <li>
+                <i class="fa fa-envelope"></i>
+                municipalidadpuentealto@mpuentealto.cl
+              </li>
+              <li>
+                <i class="fa fa-map"></i>Avenida Concha y Toro N°1820, Puente
+                Alto, Chile
+              </li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-4">
             <ul class="social-links">
               <li>
-                <a href="https://www.facebook.com/munipuentealto/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a
+                  href="https://www.facebook.com/munipuentealto/"
+                  target="_blank"
+                  ><i class="fab fa-facebook"></i
+                ></a>
               </li>
               <li>
                 <a href="https://twitter.com/mpuentealto" target="_blank"
@@ -65,10 +90,16 @@ https://templatemo.com/tm-591-villa-agency
                 ></a>
               </li>
               <li>
-                <a href="https://www.flickr.com/photos/impuentealto/" target="_blank"><i class="fab fa-flickr"></i></a>
+                <a
+                  href="https://www.flickr.com/photos/impuentealto/"
+                  target="_blank"
+                  ><i class="fab fa-flickr"></i
+                ></a>
               </li>
               <li>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/mpuentealto/" target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
               </li>
             </ul>
           </div>
@@ -77,31 +108,33 @@ https://templatemo.com/tm-591-villa-agency
     </div>
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky" id="inicio">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <nav class="main-nav">
               <!-- ***** Logo Start ***** -->
-              <a href="index.html" class="logo"><h1>Villa</h1></a>
+              <a href="#inicio" class="logo"
+                ><h1><strong>Talleres</strong></h1></a
+              >
               <!-- ***** Logo End ***** -->
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
                 <li>
-                  <a href="index.html" class="active">Home</a>
+                  <a href="#inicio" class="active">Inicio</a>
                 </li>
                 <li>
-                  <a href="properties.html">Properties</a>
+                  <a href="#Proposito">Proposito</a>
                 </li>
                 <li>
-                  <a href="property-details.html">Property Details</a>
+                  <a href="#talleres">Talleres</a>
                 </li>
                 <li>
                   <a href="contact.html">Contact Us</a>
                 </li>
                 <li>
                   <a href="#"
-                    ><i class="fa fa-calendar"></i> Schedule a visit</a
+                    ><i class="fa fa-user"></i> Iniciar Sesion</a
                   >
                 </li>
               </ul>
@@ -113,32 +146,85 @@ https://templatemo.com/tm-591-villa-agency
       </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
-    <div class="main-banner">
-      <div class="owl-carousel owl-banner">
-        <div class="item">
-          <img src="{% static 'assets/images/banner-01.jpg' %}" alt="">
-          <div class="header-text">
-            <span class="category">Toronto, <em>Canada</em></span>
-            <h2>Hurry!<br />Get the Best Villa for you</h2>
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="{% static 'assets/images/banner-01.jpg' %}"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
-        <div class="item item-2">
-          <div class="header-text">
-            <span class="category">Melbourne, <em>Australia</em></span>
-            <h2>Be Quick!<br />Get the best villa in town</h2>
+        <div class="carousel-item">
+          <img
+            src="{% static 'assets/images/banner-02.jpg' %}"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
-        <div class="item item-3">
-          <div class="header-text">
-            <span class="category">Miami, <em>South Florida</em></span>
-            <h2>Act Now!<br />Get the highest level penthouse</h2>
+        <div class="carousel-item">
+          <img
+            src="{% static 'assets/images/banner-03.jpg' %}"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
           </div>
         </div>
       </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
 
-    <div class="featured section">
+    <div class="featured section" id="Proposito">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
@@ -154,8 +240,8 @@ https://templatemo.com/tm-591-villa-agency
           </div>
           <div class="col-lg-5">
             <div class="section-heading">
-              <h6>| Featured</h6>
-              <h2>Best Appartment &amp; Sea view</h2>
+              <h4>| Propósito</h4>
+              <h2>Cuerpo activo &amp; mente vibrante</h2>
             </div>
             <div class="accordion" id="accordionExample">
               <div class="accordion-item">
@@ -168,7 +254,7 @@ https://templatemo.com/tm-591-villa-agency
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Best useful links ?
+                    ¿ Quienes somos ?
                   </button>
                 </h2>
                 <div
@@ -178,15 +264,11 @@ https://templatemo.com/tm-591-villa-agency
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    Get <strong>the best villa</strong> website template in HTML
-                    CSS and Bootstrap for your business. TemplateMo provides you
-                    the
-                    <a
-                      href="https://www.google.com/search?q=best+free+css+templates"
-                      target="_blank"
-                      >best free CSS templates</a
-                    >
-                    in the world. Please tell your friends about it.
+                    Somos un equipo apasionado comprometido en la ejecucion de
+                    talleres enfocados en adultos mayores. En
+                    <strong>Genshin impact 4.1 furina banner</strong>, creemos
+                    en Talleres que enriquecen el cuerpo y el alma, porque la
+                    vida sigue siendo una hermosa lección..
                   </div>
                 </div>
               </div>
@@ -200,7 +282,7 @@ https://templatemo.com/tm-591-villa-agency
                     aria-expanded="false"
                     aria-controls="collapseTwo"
                   >
-                    How does this work ?
+                    ¿ Nuestro Propósito ?
                   </button>
                 </h2>
                 <div
@@ -210,10 +292,13 @@ https://templatemo.com/tm-591-villa-agency
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    Dolor <strong>almesit amet</strong>, consectetur adipiscing
-                    elit, sed doesn't eiusmod tempor incididunt ut labore
-                    consectetur <code>adipiscing</code> elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                    En <strong>Genshin impact 4.1 furina banner</strong>, nos
+                    dedicamos a inspirar y enriquecer las vidas de adultos
+                    mayores. Nuestro propósito es crear un espacio donde la
+                    sabiduría se fusiona con la vitalidad, brindando
+                    oportunidades para aprender, conectar y prosperar en cada
+                    etapa de la vida. ¡Bienvenido a un viaje de bienestar y
+                    descubrimiento!
                   </div>
                 </div>
               </div>
@@ -227,7 +312,7 @@ https://templatemo.com/tm-591-villa-agency
                     aria-expanded="false"
                     aria-controls="collapseThree"
                   >
-                    Why is Villa Agency the best ?
+                    ¿ Por qué Nuestros Talleres son los Mejores ?
                   </button>
                 </h2>
                 <div
@@ -237,10 +322,16 @@ https://templatemo.com/tm-591-villa-agency
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    Dolor <strong>almesit amet</strong>, consectetur adipiscing
-                    elit, sed doesn't eiusmod tempor incididunt ut labore
-                    consectetur <code>adipiscing</code> elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
+                    En <strong>Genshin impact 4.1 furina banner</strong>, nos destacamos por
+                    ofrecer una experiencia única y enriquecedora para adultos
+                    mayores. ¿Qué nos hace los mejores? Enfoque Integral,  Profesionales Apasionados,  Comunidad Cálida y
+                    Solidaria,  Variedad de Opciones,  Resultados
+                    Tangibles, Nos enorgullece ver el impacto positivo en la
+                    vida de nuestros participantes. Descubre la diferencia en
+                    <strong>Genshin impact 4.1 furina banner</strong>. Únete a nosotros y
+                    experimenta por qué nuestros talleres son la elección
+                    preferida para aquellos que buscan calidad, compromiso y
+                    bienestar duradero.
                   </div>
                 </div>
               </div>
@@ -250,36 +341,36 @@ https://templatemo.com/tm-591-villa-agency
             <div class="info-table">
               <ul>
                 <li>
-                  <img
-                    href="{% static 'assets/images/info-icon-01.png' %}"
-                    alt=""
-                    style="max-width: 52px"
-                  />
-                  <h4>250 m2<br /><span>Total Flat Space</span></h4>
+                  <h4>
+                    Inclusividad <br /><span
+                      >Valoramos y respetamos la diversidad de experiencias,
+                      habilidades y perspectivas.</span
+                    >
+                  </h4>
                 </li>
                 <li>
-                  <img
-                    href="{% static 'assets/images/info-icon-02.png' %}"
-                    alt=""
-                    style="max-width: 52px"
-                  />
-                  <h4>Contract<br /><span>Contract Ready</span></h4>
+                  <h4>
+                    Aprendizaje Continuo<br /><span
+                      >Fomentamos un espíritu de curiosidad y aprendizaje
+                      constante.</span
+                    >
+                  </h4>
                 </li>
                 <li>
-                  <img
-                    href="{% static 'assets/images/info-icon-03.png' %}"
-                    alt=""
-                    style="max-width: 52px"
-                  />
-                  <h4>Payment<br /><span>Payment Process</span></h4>
+                  <h4>
+                    Bienestar Integral<br /><span
+                      >Nos comprometemos a promover el bienestar en todas sus
+                      dimensiones: física, emocional y social.</span
+                    >
+                  </h4>
                 </li>
                 <li>
-                  <img
-                    href="{% static 'assets/images/info-icon-04.png' %}"
-                    alt=""
-                    style="max-width: 52px"
-                  />
-                  <h4>Safety<br /><span>24/7 Under Control</span></h4>
+                  <h4>
+                    Colaboración y Comunidad<br /><span
+                      >Valoramos la importancia de construir relaciones y
+                      compartir experiencias.</span
+                    >
+                  </h4>
                 </li>
               </ul>
             </div>
@@ -288,84 +379,14 @@ https://templatemo.com/tm-591-villa-agency
       </div>
     </div>
 
-    <div class="video section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 offset-lg-4">
-            <div class="section-heading text-center">
-              <h6>| Video View</h6>
-              <h2>Get Closer View & Different Feeling</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="video-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="video-frame">
-              <img src="{% static 'assets/images/video-frame.jpg' %}" alt="" />
-              <a href="https://youtube.com" target="_blank"
-                ><i class="fa fa-play"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="fun-facts">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="wrapper">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="counter">
-                    <h2
-                      class="timer count-title count-number"
-                      data-to="34"
-                      data-speed="1000"
-                    ></h2>
-                    <p class="count-text">Buildings<br />Finished Now</p>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="counter">
-                    <h2
-                      class="timer count-title count-number"
-                      data-to="12"
-                      data-speed="1000"
-                    ></h2>
-                    <p class="count-text">Years<br />Experience</p>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="counter">
-                    <h2
-                      class="timer count-title count-number"
-                      data-to="24"
-                      data-speed="1000"
-                    ></h2>
-                    <p class="count-text">Awwards<br />Won 2023</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section best-deal">
+    <div class="section best-deal" id="talleres">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
             <div class="section-heading">
-              <h6>| Best Deal</h6>
-              <h2>Find Your Best Deal Right Now!</h2>
+              <h6>| Talleres</h6>
+              <h2>¡ Busca tus mejores talleres !</h2>
             </div>
           </div>
           <div class="col-lg-12">
@@ -384,7 +405,7 @@ https://templatemo.com/tm-591-villa-agency
                         aria-controls="appartment"
                         aria-selected="true"
                       >
-                        Appartment
+                      Yoga para la Tercera Edad
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -398,7 +419,7 @@ https://templatemo.com/tm-591-villa-agency
                         aria-controls="villa"
                         aria-selected="false"
                       >
-                        Villa House
+                      Arte y Creatividad
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -412,7 +433,7 @@ https://templatemo.com/tm-591-villa-agency
                         aria-controls="penthouse"
                         aria-selected="false"
                       >
-                        Penthouse
+                      Baile Terapéutico
                       </button>
                     </li>
                   </ul>
@@ -859,5 +880,16 @@ https://templatemo.com/tm-591-villa-agency
     <script href="{% static 'assets/js/owl-carousel.js'%}"></script>
     <script href="{% static 'assets/js/counter.js'%}"></script>
     <script href="{% static 'assets/js/custom.js'%}"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
