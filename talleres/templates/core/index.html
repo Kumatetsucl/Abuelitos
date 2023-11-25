@@ -22,10 +22,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link
+    <!-- <link
       href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
-    />
+    /> -->
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css'%}" />
@@ -130,12 +130,10 @@ https://templatemo.com/tm-591-villa-agency
                   <a href="#talleres">Talleres</a>
                 </li>
                 <li>
-                  <a href="contact.html">Contact Us</a>
+                  <a href="#contactenos">Contactenos</a>
                 </li>
                 <li>
-                  <a href="#"
-                    ><i class="fa fa-user"></i> Iniciar Sesion</a
-                  >
+                  <a href="{% url 'login'%}"><i class="fa fa-user"></i> Iniciar Sesion</a>
                 </li>
               </ul>
               <a class="menu-trigger"><span>Menu</span></a>
@@ -322,16 +320,17 @@ https://templatemo.com/tm-591-villa-agency
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
-                    En <strong>Genshin impact 4.1 furina banner</strong>, nos destacamos por
-                    ofrecer una experiencia única y enriquecedora para adultos
-                    mayores. ¿Qué nos hace los mejores? Enfoque Integral,  Profesionales Apasionados,  Comunidad Cálida y
-                    Solidaria,  Variedad de Opciones,  Resultados
-                    Tangibles, Nos enorgullece ver el impacto positivo en la
-                    vida de nuestros participantes. Descubre la diferencia en
-                    <strong>Genshin impact 4.1 furina banner</strong>. Únete a nosotros y
-                    experimenta por qué nuestros talleres son la elección
-                    preferida para aquellos que buscan calidad, compromiso y
-                    bienestar duradero.
+                    En <strong>Genshin impact 4.1 furina banner</strong>, nos
+                    destacamos por ofrecer una experiencia única y enriquecedora
+                    para adultos mayores. ¿Qué nos hace los mejores? Enfoque
+                    Integral, Profesionales Apasionados, Comunidad Cálida y
+                    Solidaria, Variedad de Opciones, Resultados Tangibles, Nos
+                    enorgullece ver el impacto positivo en la vida de nuestros
+                    participantes. Descubre la diferencia en
+                    <strong>Genshin impact 4.1 furina banner</strong>. Únete a
+                    nosotros y experimenta por qué nuestros talleres son la
+                    elección preferida para aquellos que buscan calidad,
+                    compromiso y bienestar duradero.
                   </div>
                 </div>
               </div>
@@ -379,7 +378,6 @@ https://templatemo.com/tm-591-villa-agency
       </div>
     </div>
 
-
     <div class="section best-deal" id="talleres">
       <div class="container">
         <div class="row">
@@ -405,7 +403,7 @@ https://templatemo.com/tm-591-villa-agency
                         aria-controls="appartment"
                         aria-selected="true"
                       >
-                      Yoga para la Tercera Edad
+                        Yoga para la Tercera Edad
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -419,7 +417,7 @@ https://templatemo.com/tm-591-villa-agency
                         aria-controls="villa"
                         aria-selected="false"
                       >
-                      Arte y Creatividad
+                        Arte y Creatividad
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -433,7 +431,7 @@ https://templatemo.com/tm-591-villa-agency
                         aria-controls="penthouse"
                         aria-selected="false"
                       >
-                      Baile Terapéutico
+                        Baile Terapéutico
                       </button>
                     </li>
                   </ul>
@@ -449,11 +447,23 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="col-lg-3">
                         <div class="info-table">
                           <ul>
-                            <li>Total Flat Space <span>185 m2</span></li>
-                            <li>Floor number <span>26th</span></li>
-                            <li>Number of rooms <span>4</span></li>
-                            <li>Parking Available <span>Yes</span></li>
-                            <li>Payment Process <span>Bank</span></li>
+                            <li>
+                              Duración de las Clases
+                              <span>45 a 60 minutos</span>
+                            </li>
+                            <li>
+                              Adaptabilidad
+                              <span>Instructores capacitados</span>
+                            </li>
+                            <li>
+                              Salas Equipadas
+                              <span>Piso de goma eva</span>
+                            </li>
+                            <li>
+                              Alumnos por Clase
+                              <span>10 Alumnos</span>
+                            </li>
+                            <li>Cantidad de Clases <span>15 Clases</span></li>
                           </ul>
                         </div>
                       </div>
@@ -464,19 +474,22 @@ https://templatemo.com/tm-591-villa-agency
                         />
                       </div>
                       <div class="col-lg-3">
-                        <h4>Extra Info About Property</h4>
+                        <h4>
+                          Detalles sobre nuestras Clases de Yoga para la Tercera
+                          Edad
+                        </h4>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, do eiusmod tempor pack incididunt ut labore et
-                          dolore magna aliqua quised ipsum suspendisse.
-                          <br /><br />When you need free CSS templates, you can
-                          simply type TemplateMo in any search engine website.
-                          In addition, you can type TemplateMo Portfolio,
-                          TemplateMo One Page Layouts, etc.
+                          Descubre la serenidad a través de nuestras sesiones
+                          adaptadas de yoga para adultos mayores. Nuestros
+                          instructores capacitados se centran en mejorar la
+                          flexibilidad, equilibrio y bienestar general.
+                          Experimenta un ambiente relajado y participa
+                          activamente en un viaje hacia la armonía mente-cuerpo.
                         </p>
+
                         <div class="icon-button">
                           <a href="property-details.html"
-                            ><i class="fa fa-calendar"></i> Schedule a visit</a
+                            ><i class="fa fa-check"></i> Inscribirse</a
                           >
                         </div>
                       </div>
@@ -492,11 +505,23 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="col-lg-3">
                         <div class="info-table">
                           <ul>
-                            <li>Total Flat Space <span>250 m2</span></li>
-                            <li>Floor number <span>26th</span></li>
-                            <li>Number of rooms <span>5</span></li>
-                            <li>Parking Available <span>Yes</span></li>
-                            <li>Payment Process <span>Bank</span></li>
+                            <li>
+                              Duración de las Clases
+                              <span>45 a 60 minutos</span>
+                            </li>
+                            <li>
+                              Adaptabilidad
+                              <span>Instructores capacitados</span>
+                            </li>
+                            <li>
+                              Salas Equipadas
+                              <span>Piso de goma eva</span>
+                            </li>
+                            <li>
+                              Alumnos por Clase
+                              <span>20 Alumnos</span>
+                            </li>
+                            <li>Cantidad de Clases <span>9 Clases</span></li>
                           </ul>
                         </div>
                       </div>
@@ -507,19 +532,22 @@ https://templatemo.com/tm-591-villa-agency
                         />
                       </div>
                       <div class="col-lg-3">
-                        <h4>Detail Info About Villa</h4>
+                        <h4>
+                          Descubre más sobre nuestro Taller de Arte y
+                          Creatividad
+                        </h4>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, do eiusmod tempor pack incididunt ut labore et
-                          dolore magna aliqua quised ipsum suspendisse.
-                          <br /><br />Swag fanny pack lyft blog twee. JOMO
-                          ethical copper mug, succulents typewriter shaman DIY
-                          kitsch twee taiyaki fixie hella venmo after messenger
-                          poutine next level humblebrag swag franzen.
+                          Sumérgete en la expresión artística en nuestro taller
+                          diseñado para despertar tu creatividad. Proporcionamos
+                          una variedad de materiales y un espacio inspirador
+                          para que explores y crees obras únicas. Únete a
+                          nosotros para celebrar la diversidad de talentos y
+                          expresiones artísticas en nuestra comunidad.
                         </p>
+
                         <div class="icon-button">
                           <a href="property-details.html"
-                            ><i class="fa fa-calendar"></i> Schedule a visit</a
+                            ><i class="fa fa-check"></i> Inscribirse</a
                           >
                         </div>
                       </div>
@@ -535,11 +563,23 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="col-lg-3">
                         <div class="info-table">
                           <ul>
-                            <li>Total Flat Space <span>320 m2</span></li>
-                            <li>Floor number <span>34th</span></li>
-                            <li>Number of rooms <span>6</span></li>
-                            <li>Parking Available <span>Yes</span></li>
-                            <li>Payment Process <span>Bank</span></li>
+                            <li>
+                              Duración de las Clases
+                              <span>45 a 60 minutos</span>
+                            </li>
+                            <li>
+                              Adaptabilidad
+                              <span>Instructores capacitados</span>
+                            </li>
+                            <li>
+                              Salas Equipadas
+                              <span>Piso de goma eva</span>
+                            </li>
+                            <li>
+                              Alumnos por Clase
+                              <span>15 Alumnos</span>
+                            </li>
+                            <li>Cantidad de Clases <span>8 Clases</span></li>
                           </ul>
                         </div>
                       </div>
@@ -550,19 +590,20 @@ https://templatemo.com/tm-591-villa-agency
                         />
                       </div>
                       <div class="col-lg-3">
-                        <h4>Extra Info About Penthouse</h4>
+                        <h4>Explora más sobre nuestro Baile Terapéutico</h4>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, do eiusmod tempor pack incididunt ut labore et
-                          dolore magna aliqua quised ipsum suspendisse.
-                          <br /><br />Swag fanny pack lyft blog twee. JOMO
-                          ethical copper mug, succulents typewriter shaman DIY
-                          kitsch twee taiyaki fixie hella venmo after messenger
-                          poutine next level humblebrag swag franzen.
+                          ¡Mueve tu cuerpo y eleva tu espíritu en nuestras
+                          clases de baile terapéutico! Con instructores
+                          especializados y música adaptada, te invitamos a un
+                          entorno divertido y social donde la diversión se
+                          combina con el ejercicio. Descubre la alegría del
+                          baile mientras te sumerges en una experiencia única y
+                          revitalizante.
                         </p>
+
                         <div class="icon-button">
                           <a href="property-details.html"
-                            ><i class="fa fa-calendar"></i> Schedule a visit</a
+                            ><i class="fa fa-check"></i> Inscribirse</a
                           >
                         </div>
                       </div>
@@ -735,13 +776,13 @@ https://templatemo.com/tm-591-villa-agency
       </div>
     </div>
 
-    <div class="contact section">
+    <div class="contact section" id="contactenos">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 offset-lg-4">
             <div class="section-heading text-center">
-              <h6>| Contact Us</h6>
-              <h2>Get In Touch With Our Agents</h2>
+              <h6>| Contactenos</h6>
+              <h3>¡ Un Mejor lugar para todos !</h3>
             </div>
           </div>
         </div>
@@ -754,7 +795,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="col-lg-7">
             <div id="map">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1486.4368163980332!2d-70.58132691823297!3d-33.59525884369652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d6557f41bdbf%3A0xc6b9ae259e0332fc!2sMunicipalidad%20de%20Puente%20Alto!5e1!3m2!1ses!2scl!4v1700866353990!5m2!1ses!2scl"
                 width="100%"
                 height="500px"
                 frameborder="0"
@@ -774,7 +815,7 @@ https://templatemo.com/tm-591-villa-agency
                     alt=""
                     style="max-width: 52px"
                   />
-                  <h6>010-020-0340<br /><span>Phone Number</span></h6>
+                  <h6>2-2434-4725<br /><span>Teléfono</span></h6>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -784,7 +825,7 @@ https://templatemo.com/tm-591-villa-agency
                     alt=""
                     style="max-width: 52px"
                   />
-                  <h6>info@villa.co<br /><span>Business Email</span></h6>
+                  <h6>info@MPAlto.cl<br /><span>Correo Electrónico</span></h6>
                 </div>
               </div>
             </div>
@@ -794,12 +835,12 @@ https://templatemo.com/tm-591-villa-agency
               <div class="row">
                 <div class="col-lg-12">
                   <fieldset>
-                    <label for="name">Full Name</label>
+                    <label for="name">Nombre Completo</label>
                     <input
                       type="name"
                       name="name"
                       id="name"
-                      placeholder="Your Name..."
+                      placeholder="Su Nombre..."
                       autocomplete="on"
                       required
                     />
@@ -807,36 +848,39 @@ https://templatemo.com/tm-591-villa-agency
                 </div>
                 <div class="col-lg-12">
                   <fieldset>
-                    <label for="email">Email Address</label>
+                    <label for="email">Correo Electrónico</label>
                     <input
                       type="text"
                       name="email"
                       id="email"
                       pattern="[^ @]*@[^ @]*"
-                      placeholder="Your E-mail..."
+                      placeholder="Su Correo..."
                       required=""
                     />
                   </fieldset>
                 </div>
+
+                <!-- dropbox para seleccion se solicitud -->
                 <div class="col-lg-12">
-                  <fieldset>
-                    <label for="subject">Subject</label>
-                    <input
-                      type="subject"
-                      name="subject"
-                      id="subject"
-                      placeholder="Subject..."
-                      autocomplete="on"
-                    />
-                  </fieldset>
+
+                    <label for="asunto">Asunto</label>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected disabled>Seleccione</option>
+                      <option value="1">Postulación Instructor</option>
+                      <option value="2">Información Talleres</option>
+                      <option value="3">Reclamos/Observaciones</option>
+                    </select>
+                
+                  <br>
                 </div>
+
                 <div class="col-lg-12">
                   <fieldset>
-                    <label for="message">Message</label>
+                    <label for="message">Mensaje</label>
                     <textarea
                       name="message"
                       id="message"
-                      placeholder="Your Message"
+                      placeholder="Su Mensaje..."
                     ></textarea>
                   </fieldset>
                 </div>
@@ -874,12 +918,12 @@ https://templatemo.com/tm-591-villa-agency
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script href="{% static 'vendor/jquery/jquery.min.js'%}"></script>
-    <script href="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
-    <script href="{% static 'assets/js/isotope.min.js'%}"></script>
-    <script href="{% static 'assets/js/owl-carousel.js'%}"></script>
-    <script href="{% static 'assets/js/counter.js'%}"></script>
-    <script href="{% static 'assets/js/custom.js'%}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+    <!-- <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script> -->
+    <script src="{% static 'assets/js/isotope.min.js'%}"></script>
+    <script src="{% static 'assets/js/owl-carousel.js'%}"></script>
+    <script src="{% static 'assets/js/counter.js'%}"></script>
+    <script src="{% static 'assets/js/custom.js'%}"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
