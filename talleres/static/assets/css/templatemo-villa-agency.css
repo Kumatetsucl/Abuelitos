@@ -614,7 +614,7 @@ Header Style
 }
 
 .visible{
-  display:inline !important;
+  display:block !important;
 }
 
 @media (max-width: 1200px) {
@@ -697,7 +697,7 @@ Header Style
     margin-left: 0px;
   }
   .header-area .menu-trigger {
-    display: block !important;
+    display: flex !important;
   }
   .header-area .main-nav {
     overflow: hidden;
