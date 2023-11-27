@@ -9,3 +9,9 @@ def registro(request):
 
 def login(request):
     return render(request,'core/login.html')
+
+def LogueadoTalleresUsuario(request):
+    return render(request,'core/LogueadoTalleresUsuario.html')
+
+def InscripcionTalleresUsuario(request):
+    return render(request,'core/InscripcionTalleresUsuario.html')

@@ -17,34 +17,36 @@
     />
     <link rel="stylesheet" href="{% static 'assets/css/style.css'%}" />
   </head>
-  <body  style=" background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);">
-    <div class="registration-form">
+  <body  style=" background: #f3552573;background: radial-gradient(circle, #f35525af 0%, rgb(255, 255, 255) 100%);">
+    <div class="registration-form" style="width:80%; margin: auto;">
       <form>
         <div class="form-icon">
           <span><i class="icon icon-user"></i></span>
         </div>
         <div class="form-group">
+          <span>Nombre de Usuario o Correo Electrónico</span>
           <input
             type="text"
             class="form-control item"
             id="username"
-            placeholder="Username"
+            placeholder="ejemplo@ejemplo.com"
             required
           />
         </div>
         <div class="form-group">
+          <span>Contraseña</span>
           <input
             type="password"
             class="form-control item"
             id="password"
-            placeholder="Password"
+            placeholder="*********"
             required
           />
         </div>
         <div class="form-group">
-          <button type="button" class="btn btn-block create-account">
+          <a type="button" class="btn btn-block create-account" href="{% url 'LogueadoTalleresUsuario'%}">
             Iniciar Sesion
-          </button>
+          </a>
         </div>
         <div class="form-group">
           <a class="btn btn-block create-account" href="{% url 'index'%}"
@@ -55,7 +57,7 @@
       <div class="social-media">
         <p>
           No tienes Cuenta?
-          <a href="{% url 'registro'%}"><strong>Click acá</strong></a>
+          <a href="{% url 'registro'%}" style="color: #f35525;"><strong>Click acá</strong></a>
         </p>
       </div>
 

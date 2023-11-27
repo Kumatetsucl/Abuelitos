@@ -14,7 +14,7 @@
 
 .registration-form .form-icon{
 	text-align: center;
-    background-color: #5891ff;
+    background-color: #f35525;
     border-radius: 50%;
     font-size: 40px;
     color: white;
@@ -36,7 +36,7 @@
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #5791ff;
+    background-color: #f35525;
     border: none;
     color: white;
     margin-top: 20px;
@@ -97,7 +97,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #ff8138;
+    background-color: #f35525;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -109,10 +109,14 @@
     transition: background-color 0.3s, transform 0.3s;
   
     &:hover {
-      background-color: #302f2e;
+      background-color: #f35525;
     }
   
     &:active {
       transform: scale(0.9);
     }
   }
+
+body div div div form div p {
+    color: #000000;
+}
