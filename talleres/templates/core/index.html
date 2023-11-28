@@ -135,7 +135,7 @@ https://templatemo.com/tm-591-villa-agency
                 </li>
                 {% if user.is_authenticated %}
                 <li>
-                  <a type="button" href="{% url 'logout'%}"
+                  <a type="button" href="#" onclick="CerrarSesion()"
                     ><i class="fa fa-user"></i> Hola, {{ user.username }}</a
                   >
                 </li>
@@ -891,5 +891,24 @@ https://templatemo.com/tm-591-villa-agency
             </script>
         {% endfor %}
     {% endif %}
+
+    <script>
+        function CerrarSesion(){
+          Swal.fire({
+            "title": "¿Deseas cerrar sesión?",
+            "text": "Una vez cerrada la sesión, necesitarás entrar de nuevo a tu cuenta.",
+            "icon": "question",
+            "showCancelButton": true,
+            "cancelButtonText": "No, volver.",
+            "confirmButtonText": "Si, cerrar sesión.",
+            "confirmButtonColor": "#dc3545"
+          })
+          .then(function(result){
+            if(result.isConfirmed){
+              window.location.href = "logout/"
+            }
+          })
+        }
+    </script>
   </body>
 </html>

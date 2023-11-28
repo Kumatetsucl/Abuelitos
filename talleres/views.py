@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -37,6 +38,13 @@ def loginIndex(request):
             return render(request, 'core/login.html')
     else:
         return render(request, 'core/login.html')
+
+def cerrar_sesion(request):
+    logout(request)
+    if 'username' in request.session:
+        del request.session['username']  
+    
+    return redirect('index') 
 
 def LogueadoTalleresUsuario(request):
     return render(request,'core/LogueadoTalleresUsuario.html')
