@@ -68,7 +68,7 @@ def modificarInstructorFuncionario(request):
 
 # Inscribir a taller vista Funcionario
 def inscribir(request):
-    return render(request,'core/mantenedores/inscribirATaller/inscribir.html')
+    return render(request,'core/mantenedores/InscribirATaller/inscribir.html')
 
 ####################################################################################################################
 
