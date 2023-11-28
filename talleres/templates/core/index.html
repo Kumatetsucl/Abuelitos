@@ -133,11 +133,19 @@ https://templatemo.com/tm-591-villa-agency
                 <li>
                   <a href="#contactenos">Contactenos</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li>
+                  <a type="button" href="{% url 'logout'%}"
+                    ><i class="fa fa-user"></i> Hola, {{ user.username }}</a
+                  >
+                </li>
+                {% else %}
                 <li>
                   <a type="button" href="{% url 'login'%}"
                     ><i class="fa fa-user"></i> Iniciar Sesion</a
                   >
                 </li>
+              {% endif %}
               </ul>
               <a class="menu-trigger"><span>menu</span></a>
               <!-- ***** Menu End ***** -->
@@ -729,7 +737,6 @@ https://templatemo.com/tm-591-villa-agency
 
                   <br />
                 </div>
-
                 <div class="col-lg-12">
                   <fieldset>
                     <label for="message">Mensaje</label>
@@ -854,6 +861,7 @@ https://templatemo.com/tm-591-villa-agency
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
     <script src="{% static 'assets/js/isotope.min.js'%}"></script>
@@ -871,5 +879,17 @@ https://templatemo.com/tm-591-villa-agency
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title": "Felicitaciones",
+                    "text": "{{m}}",
+                    "icon": "success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
   </body>
 </html>

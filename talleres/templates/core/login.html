@@ -19,15 +19,17 @@
   </head>
   <body  style=" background: #f3552573;background: radial-gradient(circle, #f35525af 0%, rgb(255, 255, 255) 100%);">
     <div class="registration-form" style="width:80%; margin: auto;">
-      <form>
+      <form method="post">
         <div class="form-icon">
           <span><i class="icon icon-user"></i></span>
         </div>
+        {% csrf_token %}
         <div class="form-group">
           <span>Nombre de Usuario o Correo Electrónico</span>
           <input
             type="text"
             class="form-control item"
+            name="username" 
             id="username"
             placeholder="ejemplo@ejemplo.com"
             required
@@ -38,15 +40,16 @@
           <input
             type="password"
             class="form-control item"
+            name="password" 
             id="password"
             placeholder="*********"
             required
           />
         </div>
         <div class="form-group">
-          <a type="button" class="btn btn-block create-account" href="{% url 'LogueadoTalleresUsuario'%}">
+          <button type="submit" class="btn btn-block create-account">
             Iniciar Sesion
-          </a>
+          </button>
         </div>
         <div class="form-group">
           <a class="btn btn-block create-account" href="{% url 'index'%}"
@@ -60,8 +63,13 @@
           <a href="{% url 'registro'%}" style="color: #f35525;"><strong>Click acá</strong></a>
         </p>
       </div>
-
+        {% if messages %}
+          {% for m in messages %}
+            {{m}}
+          {% endfor %}
+        {% endif %}
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       type="text/javascript"
       src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -71,5 +79,17 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"
     ></script>
     <script src="{% static 'assets/js/custom.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title": "Error",
+                    "text": "{{m}}",
+                    "icon": "error"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
   </body>
 </html>
