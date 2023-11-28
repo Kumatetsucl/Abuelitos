@@ -63,21 +63,24 @@ https://templatemo.com/tm-591-villa-agency
         <ul class="list-unstyled components">
           <p>Menu de Contenido</p>
           <li>
-            <a href="{% url 'LogueadoTalleresUsuario' %}">Mis Talleres</a>
+            <a href="{% url 'loagueadoTalleresAdmin' %}">Talleres</a>
           </li>
           <li>
-            <a href="{% url 'InscripcionTalleresUsuario' %}"
-              >Inscribir Taller</a
+            <a href="{% url 'administrarTalleresFuncionario' %}"
+              >Administrar Talleres</a
             >
           </li>
           <li>
-            <a href="{% url 'EliminarTallerUsuario' %}">Eliminar Taller</a>
+            <a href="{% url 'administrarUsuariosFuncionario' %}">Administrar Usuarios</a>
           </li>
           <li>
-            <a href="{% url 'evaluarTallerUsuario' %}">Evaluar Taller</a>
+            <a href="{% url 'administrarInstructorFuncionario' %}">Administrar Instructor</a>
           </li>
           <li>
-            <a href="{% url 'muestraDatosUsuario' %}">Mis Datos</a>
+            <a href="{% url 'inscribir' %}">Inscribir usuario a taller</a>
+          </li>
+          <li>
+            <a href="{% url 'muestraDatosFuncionario' %}">Mis Datos</a>
           </li>
         </ul>
 
@@ -111,7 +114,7 @@ https://templatemo.com/tm-591-villa-agency
           </div>
         </nav>
 
-        <h4 style="margin: 3%">Acá podras ver los talleres Inscritos</h4>
+        <h4 style="margin: 3%">Acá podras ver los talleres Creados</h4>
         <table border="1" class="table">
           <thead class="thead-light">
             <tr>
@@ -119,8 +122,6 @@ https://templatemo.com/tm-591-villa-agency
               <th scope="col">Taller</th>
               <th scope="col">Día</th>
               <th scope="col">Horario</th>
-              <th scope="col">Eliminar Taller</th>
-              <th scope="col">Evaluación</th>
             </tr>
           </thead>
           <tbody>
@@ -129,57 +130,18 @@ https://templatemo.com/tm-591-villa-agency
               <td>Yoga</td>
               <td>Lunes</td>
               <td>10:00 AM - 11:30 AM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-              <td>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>Pintura</td>
               <td>Miércoles</td>
               <td>2:00 PM - 4:00 PM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-                <td>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>Cerámica</td>
               <td>Viernes</td>
               <td>3:30 PM - 5:00 PM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-              <td>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </td>
             </tr>
             <!-- Agrega más filas según sea necesario -->
           </tbody>
@@ -188,9 +150,9 @@ https://templatemo.com/tm-591-villa-agency
         <div class="line"></div>
 
         <div class="icon-button">
-          <a type="button" href="{% url 'InscripcionTalleresUsuario'%}">
+          <a type="button" href="{% url 'crearTallerFuncionario' %}">
             <i class="fa fa-pencil"></i>
-            <span style="color: #ffffff">Inscribir Taller</span>
+            <span style="color: #ffffff">Crear Taller</span>
           </a>
         </div>
       </div>

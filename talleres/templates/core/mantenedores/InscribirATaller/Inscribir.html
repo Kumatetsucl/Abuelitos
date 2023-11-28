@@ -63,21 +63,28 @@ https://templatemo.com/tm-591-villa-agency
         <ul class="list-unstyled components">
           <p>Menu de Contenido</p>
           <li>
-            <a href="{% url 'LogueadoTalleresUsuario' %}">Mis Talleres</a>
+            <a href="{% url 'loagueadoTalleresAdmin' %}">Talleres</a>
           </li>
           <li>
-            <a href="{% url 'InscripcionTalleresUsuario' %}"
-              >Inscribir Taller</a
+            <a href="{% url 'administrarTalleresFuncionario' %}"
+              >Administrar Talleres</a
             >
           </li>
           <li>
-            <a href="{% url 'EliminarTallerUsuario' %}">Eliminar Taller</a>
+            <a href="{% url 'administrarUsuariosFuncionario' %}"
+              >Administrar Usuarios</a
+            >
           </li>
           <li>
-            <a href="{% url 'evaluarTallerUsuario' %}">Evaluar Taller</a>
+            <a href="{% url 'administrarInstructorFuncionario' %}"
+              >Administrar Instructor</a
+            >
           </li>
           <li>
-            <a href="{% url 'muestraDatosUsuario' %}">Mis Datos</a>
+            <a href="{% url 'inscribir' %}">Inscribir usuario a taller</a>
+          </li>
+          <li>
+            <a href="{% url 'muestraDatosFuncionario' %}">Mis Datos</a>
           </li>
         </ul>
 
@@ -111,88 +118,66 @@ https://templatemo.com/tm-591-villa-agency
           </div>
         </nav>
 
-        <h4 style="margin: 3%">Acá podras ver los talleres Inscritos</h4>
-        <table border="1" class="table">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Taller</th>
-              <th scope="col">Día</th>
-              <th scope="col">Horario</th>
-              <th scope="col">Eliminar Taller</th>
-              <th scope="col">Evaluación</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Yoga</td>
-              <td>Lunes</td>
-              <td>10:00 AM - 11:30 AM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
+        <h4 style="margin: 3%">Selecciona el Usuario</h4>
+        <div class="container rounded bg-white">
+          <div class="row">
+            <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
                 >
-              </td>
-              <td>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Pintura</td>
-              <td>Miércoles</td>
-              <td>2:00 PM - 4:00 PM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-                <td>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cerámica</td>
-              <td>Viernes</td>
-              <td>3:30 PM - 5:00 PM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-              <td>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
-          </tbody>
-        </table>
+                  <form>
+                    <div class="row mt-2">
+                      <div class="col-md-12">
+                        <label for="selectTaller">Taller:</label>
+                        <select
+                          id="selectTaller"
+                          name="selectTaller"
+                          class="form-control"
+                        >
+                          <option value="0" disabled selected>
+                            Seleccione
+                          </option>
+                          <option value="Taller1">Taller 1</option>
+                          <option value="Taller2">Taller 2</option>
+                          <option value="Taller3">Taller 3</option>
+                        </select>
+                        <br>
+                      </div>
+                      <div class="col-md-12">
+                        <label for="selectUsuario">Usuario:</label>
+                        <select
+                          id="selectUsuario"
+                          name="selectUsuario"
+                          class="form-control"
+                        >
+                          <option value="0" disabled selected>
+                            Seleccione
+                          </option>
+                          <option value="Usuario1">Usuario 1</option>
+                          <option value="Usuario2">Usuario 2</option>
+                          <option value="Usuario3">Usuario 3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button
+                          id="crearInstructorBtn"
+                          class="btn btn-primary profile-button"
+                          type="button"
+                        >
+                          Inscribir
+                        </button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div></div>
         <div class="line"></div>
-
-        <div class="icon-button">
-          <a type="button" href="{% url 'InscripcionTalleresUsuario'%}">
-            <i class="fa fa-pencil"></i>
-            <span style="color: #ffffff">Inscribir Taller</span>
-          </a>
-        </div>
       </div>
     </div>
 

@@ -59,40 +59,46 @@ https://templatemo.com/tm-591-villa-agency
             Vivir Plenamente
           </h3>
         </div>
-
         <ul class="list-unstyled components">
-          <p>Menu de Contenido</p>
-          <li>
-            <a href="{% url 'LogueadoTalleresUsuario' %}">Mis Talleres</a>
-          </li>
-          <li>
-            <a href="{% url 'InscripcionTalleresUsuario' %}"
-              >Inscribir Taller</a
-            >
-          </li>
-          <li>
-            <a href="{% url 'EliminarTallerUsuario' %}">Eliminar Taller</a>
-          </li>
-          <li>
-            <a href="{% url 'evaluarTallerUsuario' %}">Evaluar Taller</a>
-          </li>
-          <li>
-            <a href="{% url 'muestraDatosUsuario' %}">Mis Datos</a>
-          </li>
-        </ul>
-
-        <ul style="text-align: center; padding: 0; margin-top: 10%">
-          <div class="icon-button">
-            <a
-              type="button"
-              href="{% url 'index'%}"
-              style="display: inline-block"
-            >
-              <i class="fa fa-sign-out" aria-hidden="true"></i>
-              <span style="color: #ffffff">Cerrar Sesión</span>
-            </a>
-          </div>
-        </ul>
+            <p>Menu de Contenido</p>
+            <li>
+              <a href="{% url 'loagueadoTalleresAdmin' %}">Talleres</a>
+            </li>
+            <li>
+              <a href="{% url 'administrarTalleresFuncionario' %}"
+                >Administrar Talleres</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'administrarUsuariosFuncionario' %}"
+                >Administrar Usuarios</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'administrarInstructorFuncionario' %}"
+                >Administrar Instructor</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'inscribir' %}">Inscribir usuario a taller</a>
+            </li>
+            <li>
+              <a href="{% url 'muestraDatosFuncionario' %}">Mis Datos</a>
+            </li>
+          </ul>
+  
+          <ul style="text-align: center; padding: 0; margin-top: 10%">
+            <div class="icon-button">
+              <a
+                type="button"
+                href="{% url 'index'%}"
+                style="display: inline-block"
+              >
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <span style="color: #ffffff">Cerrar Sesión</span>
+              </a>
+            </div>
+          </ul>
       </nav>
 
       <!-- Page Content  -->
@@ -111,87 +117,119 @@ https://templatemo.com/tm-591-villa-agency
           </div>
         </nav>
 
-        <h4 style="margin: 3%">Acá podras ver los talleres Inscritos</h4>
-        <table border="1" class="table">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Taller</th>
-              <th scope="col">Día</th>
-              <th scope="col">Horario</th>
-              <th scope="col">Eliminar Taller</th>
-              <th scope="col">Evaluación</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Yoga</td>
-              <td>Lunes</td>
-              <td>10:00 AM - 11:30 AM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
+        <div class="container rounded bg-white">
+          <div class="row">
+            <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
                 >
-              </td>
-              <td>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Pintura</td>
-              <td>Miércoles</td>
-              <td>2:00 PM - 4:00 PM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-                <td>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cerámica</td>
-              <td>Viernes</td>
-              <td>3:30 PM - 5:00 PM</td>
-              <td>
-                <a href=""
-                  ><i class="fa fa-star" aria-hidden="true"></i> Evaluar
-                  Taller</a
-                >
-              </td>
-              <td>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
-          </tbody>
-        </table>
-        <div></div>
-        <div class="line"></div>
+                  <h4 class="text-right">Mis Datos</h4>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">Nombre</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nombre..."
+                      value=""
+                      disabled
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Apellido</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      value=""
+                      placeholder="Apellido..."
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label class="labels">Telefono de contacto</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Telefono..."
+                      disabled
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Dirección</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Dirección..."
+                      disabled
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Correo Electrónico</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Correo Electrónico..."
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <label for="nacionalidad">Nacionalidad:</label>
+                    <select
+                      id="nacionalidad"
+                      name="nacionalidad"
+                      class="form-control"
+                      disabled
+                    >
+                      <option value="0" disabled selected>Seleccione</option>
+                      <option value="opcion1">Chile</option>
+                      <option value="opcion2">Repartidor Rappi</option>
+                      <option value="opcion3">otro</option>
+                    </select>
+                  </div>
 
-        <div class="icon-button">
-          <a type="button" href="{% url 'InscripcionTalleresUsuario'%}">
-            <i class="fa fa-pencil"></i>
-            <span style="color: #ffffff">Inscribir Taller</span>
-          </a>
+                  <div class="col-md-6">
+                    <label for="genero">Género:</label>
+                    <select
+                      id="genero"
+                      name="genero"
+                      class="form-control"
+                      disabled
+                    >
+                      <option value="0" disabled selected>Seleccione</option>
+                      <option value="masculino">Masculino</option>
+                      <option value="femenino">Femenino</option>
+                      <option value="otro">36 tipos de gays</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mt-5 text-center">
+                  <button
+                    id="editarBtn"
+                    class="btn btn-primary profile-button"
+                    type="button"
+                    onclick="toggleEdicion()"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    id="BotonEnviar"
+                    class="btn btn-primary profile-button"
+                    type="button"
+                    hidden
+                    onclick="toggleEdicion()"
+                  >
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
