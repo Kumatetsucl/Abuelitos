@@ -55,7 +55,9 @@ https://templatemo.com/tm-591-villa-agency
       <!-- Sidebar  -->
       <nav id="sidebar">
         <div class="sidebar-header">
-          <h3>Vivir Plenamente</h3>
+          <h3 style="color: #ffffff; text-shadow: 2px 2px #000">
+            Vivir Plenamente
+          </h3>
         </div>
 
         <ul class="list-unstyled components">
@@ -64,10 +66,16 @@ https://templatemo.com/tm-591-villa-agency
             <a href="{% url 'LogueadoTalleresUsuario' %}">Mis Talleres</a>
           </li>
           <li>
-            <a href="#">Inscribir a Taller</a>
+            <a href="{% url 'InscripcionTalleresUsuario' %}">Inscribir Taller</a>
           </li>
           <li>
-            <a href="#">Mis Datos</a>
+            <a href="{% url 'EliminarTallerUsuario' %}">Eliminar Taller</a>
+          </li>
+          <li>
+            <a href="{% url 'evaluarTallerUsuario' %}">Evaluar Taller</a>
+          </li>
+          <li>
+            <a href="{% url 'muestraDatosUsuario' %}">Mis Datos</a>
           </li>
         </ul>
 

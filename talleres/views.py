@@ -15,3 +15,12 @@ def LogueadoTalleresUsuario(request):
 
 def InscripcionTalleresUsuario(request):
     return render(request,'core/InscripcionTalleresUsuario.html')
+
+def muestraDatosUsuario(request):
+    return render(request,'core/muestraDatosUsuario.html')
+
+def EliminarTallerUsuario(request):
+    return render(request, 'core/EliminarTallerUsuario.html')
+
+def evaluarTallerUsuario(request):
+    return render(request, 'core/evaluarTallerUsuario.html')
