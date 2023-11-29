@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UserForm
+from .forms import *
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
+from .models import * 
+from datetime import date
+from django.contrib.auth.decorators import user_passes_test
 
 
 # Create your views here.
 def index(request):
     return render(request, 'core/index.html')
+
+def es_administrador(user):
+    return user.is_authenticated and user.is_staff
 
 def registro(request):
     if request.method == 'POST':
@@ -32,7 +38,10 @@ def loginIndex(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('index')
+            if user.is_staff:
+                return redirect('loagueadoTalleresAdmin')
+            else:
+                return redirect('LogueadoTalleresUsuario')
         else:
             messages.error(request, 'Error nombre de usuario o contraseña incorrectos')
             return render(request, 'core/login.html')
@@ -63,40 +72,109 @@ def evaluarTallerUsuario(request):
 
 ####################################################################################################################
 
-#crud talleres funcionmario
+@user_passes_test(es_administrador)
 def loagueadoTalleresAdmin(request):
-    return render(request,'core/mantenedores/tallerFuncionario/loagueadoTalleresAdmin.html')
+    talleres = Tallere.objects.all()
+    return render(request,'core/mantenedores/tallerFuncionario/loagueadoTalleresAdmin.html', {'talleres': talleres})
 
+@user_passes_test(es_administrador)
 def administrarTalleresFuncionario(request):
-    return render(request,'core/mantenedores/tallerFuncionario/administrarTalleresFuncionario.html')
+    talleres = Tallere.objects.all()
+    return render(request,'core/mantenedores/tallerFuncionario/administrarTalleresFuncionario.html', {'talleres': talleres})
 
+@user_passes_test(es_administrador)
 def crearTallerFuncionario(request):
-    return render(request,'core/mantenedores/tallerFuncionario/crearTallerFuncionario.html')
+    instructores = Instructore.objects.all()
+    if request.method == 'POST':
+        formulario = TallerForm(request.POST)
+        if formulario.is_valid():
+            nuevo_taller = formulario.save(commit=False)
+            nuevo_taller.lunes = request.POST.get('lunes', False) == 'on'
+            nuevo_taller.martes = request.POST.get('martes', False) == 'on'
+            nuevo_taller.miercoles = request.POST.get('miercoles', False) == 'on'
+            nuevo_taller.jueves = request.POST.get('jueves', False) == 'on'
+            nuevo_taller.viernes = request.POST.get('viernes', False) == 'on'
+            nuevo_taller.sabado = request.POST.get('sabado', False) == 'on'
+            nuevo_taller = formulario.save()
+            messages.success(request, 'Taller creado exitosamente.')
+            return redirect('administrarTalleresFuncionario')  # Redirige a la vista que muestra los talleres
+        else:
+            errors = dict((field, errors[0]) for field, errors in formulario.errors.items())
+            print(errors)
+    else:
+        formulario = TallerForm()
+        
+    return render(request,'core/mantenedores/tallerFuncionario/crearTallerFuncionario.html', {'form': formulario, 'instructores': instructores})
 
-def modificarTallerFuncionario(request):
-    return render(request,'core/mantenedores/tallerFuncionario/modificarTallerFuncionario.html')
+@user_passes_test(es_administrador)
+def modificarTallerFuncionario(request, taller_id):
+    taller = get_object_or_404(Tallere, id=taller_id)
+
+    if request.method == 'POST':
+        formulario = TallerForm(request.POST, instance=taller)
+        if formulario.is_valid():
+            taller = formulario.save(commit=False)
+            taller.lunes = request.POST.get('lunes', False) == 'on'
+            taller.martes = request.POST.get('martes', False) == 'on'
+            taller.miercoles = request.POST.get('miercoles', False) == 'on'
+            taller.jueves = request.POST.get('jueves', False) == 'on'
+            taller.viernes = request.POST.get('viernes', False) == 'on'
+            taller.sabado = request.POST.get('sabado', False) == 'on'
+            formulario.save()
+            messages.success(request, 'Taller modificado exitosamente.')
+            return redirect('administrarTalleresFuncionario') 
+        else:
+            errors = dict((field, errors[0]) for field, errors in formulario.errors.items())
+            print(errors)
+            messages.error(request, 'Error al modificar el taller. Por favor, verifica los datos ingresados.')
+    else:
+        formulario = TallerForm(instance=taller)
+
+    instructores = Instructore.objects.all()
+    return render(request, 'core/mantenedores/tallerFuncionario/modificarTallerFuncionario.html', {'form': formulario, 'instructores': instructores, 'taller': taller})
+
+@user_passes_test(es_administrador)
+def eliminar_taller(request, taller_id):
+    taller = get_object_or_404(Tallere, id=taller_id)
+    taller.delete()
+    # Puedes agregar un mensaje de éxito si lo deseas
+    messages.success(request, 'Taller eliminado exitosamente.')
+    return redirect('administrarTalleresFuncionario')
 
 ####################################################################################################################
 
-#CRUD Usuarios desde funcionmario
+@user_passes_test(es_administrador)
 def administrarUsuariosFuncionario(request):
-    return render(request,'core/mantenedores/usuarioFuncionario/administrarUsuariosFuncionario.html')
+    usuarios = CustomUser.objects.all()
+    # Calcular la edad y agregarla al contexto
+    for usuario in usuarios:
+        if usuario.fecha_nacimiento:
+            hoy = date.today()
+            edad = hoy.year - usuario.fecha_nacimiento.year - ((hoy.month, hoy.day) < (usuario.fecha_nacimiento.month, usuario.fecha_nacimiento.day))
+            usuario.edad = edad
+    
+    return render(request,'core/mantenedores/usuarioFuncionario/administrarUsuariosFuncionario.html', {'usuarios': usuarios})
 
+@user_passes_test(es_administrador)
 def crearUsuariosFuncionario(request):
     return render(request,'core/mantenedores/usuarioFuncionario/crearUsuariosFuncionario.html')
 
+@user_passes_test(es_administrador)
 def modificarUsuarioFuncionario(request):
     return render(request,'core/mantenedores/usuarioFuncionario/modificarUsuarioFuncionario.html')
 
 ####################################################################################################################
 
-#CRUD Instructores desde funcionmario
+@user_passes_test(es_administrador)
 def administrarInstructorFuncionario(request):
-    return render(request,'core/mantenedores/instructorFuncionario/administrarInstructorFuncionario.html')
+    instructores = Instructore.objects.all()
+    return render(request,'core/mantenedores/instructorFuncionario/administrarInstructorFuncionario.html', {'instructores': instructores})
 
+@user_passes_test(es_administrador)
 def crearInstructorFuncionario(request):
     return render(request,'core/mantenedores/instructorFuncionario/crearInstructorFuncionario.html')
 
+@user_passes_test(es_administrador)
 def modificarInstructorFuncionario(request):
     return render(request,'core/mantenedores/instructorFuncionario/modificarInstructorFuncionario.html')
 

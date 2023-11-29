@@ -97,7 +97,6 @@ https://templatemo.com/tm-591-villa-agency
           </div>
         </ul>
       </nav>
-
       <!-- Page Content  -->
       <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -120,30 +119,24 @@ https://templatemo.com/tm-591-villa-agency
             <tr>
               <th scope="col">#</th>
               <th scope="col">Taller</th>
-              <th scope="col">Día</th>
+              <th scope="col">Días</th>
               <th scope="col">Horario</th>
             </tr>
           </thead>
           <tbody>
+            {% for tallere in talleres %}
             <tr>
-              <th scope="row">1</th>
-              <td>Yoga</td>
-              <td>Lunes</td>
-              <td>10:00 AM - 11:30 AM</td>
+              <th scope="row">{{ tallere.id }}</th>
+              <td>{{ tallere.nombre_taller }}</td>
+              <td>{% if tallere.lunes %}Lunes {% endif %}
+                {% if tallere.martes %}Martes {% endif %}
+                {% if tallere.miercoles %}Miércoles {% endif %}
+                {% if tallere.jueves %}Jueves {% endif %}
+                {% if tallere.viernes %}Viernes {% endif %}
+                {% if tallere.sabado %}Sábado {% endif %}</td>
+              <td>{{ tallere.horario_inicio }} - {{ tallere.horario_termino }}</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Pintura</td>
-              <td>Miércoles</td>
-              <td>2:00 PM - 4:00 PM</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cerámica</td>
-              <td>Viernes</td>
-              <td>3:30 PM - 5:00 PM</td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
+            {% endfor %}
           </tbody>
         </table>
         <div></div>

@@ -126,54 +126,30 @@ https://templatemo.com/tm-591-villa-agency
               <th scope="col">Elim.</th>
               <th scope="col">Eval.</th>
             </tr>
-          </thead>
+          </thead> 
           <tbody>
+            {% for tallere in talleres %}
             <tr>
-              <th scope="row">1</th>
-              <td>Yoga</td>
-              <td>Lunes</td>
-              <td>10:00 AM - 11:30 AM</td>
+              <th scope="row">{{ tallere.id }}</th>
+              <td>{{ tallere.nombre_taller }}</td>
+              <td>{% if tallere.lunes %}Lunes {% endif %}
+                {% if tallere.martes %}Martes {% endif %}
+                {% if tallere.miercoles %}Miércoles {% endif %}
+                {% if tallere.jueves %}Jueves {% endif %}
+                {% if tallere.viernes %}Viernes {% endif %}
+                {% if tallere.sabado %}Sábado {% endif %}</td>
+              <td>{{ tallere.horario_inicio }} - {{ tallere.horario_termino }}</td>
               <td>
-                <a href="{% url 'modificarTallerFuncionario' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="{% url 'modificarTallerFuncionario' tallere.id %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
               </td>
               <td>
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="#" onclick="eliminarTaller({{ tallere.id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
               </td>
               <td>
                 <span>2.5/5</span>
             </td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Pintura</td>
-              <td>Miércoles</td>
-              <td>2:00 PM - 4:00 PM</td>
-              <td>
-                <a href="{% url 'modificarTallerFuncionario' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              </td>
-              <td>
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-              </td>
-                <td>
-                    <span>2.5/5</span>
-                </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cerámica</td>
-              <td>Viernes</td>
-              <td>3:30 PM - 5:00 PM</td>
-              <td>
-                <a href="{% url 'modificarTallerFuncionario' %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              </td>
-              <td>
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-              </td>
-              <td>
-                <span>2.5/5</span>
-            </td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
+            {% endfor %}
           </tbody>
         </table>
         <div></div>
@@ -269,5 +245,37 @@ https://templatemo.com/tm-591-villa-agency
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title": "Felicitaciones",
+                    "text": "{{m}}",
+                    "icon": "success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
+
+    <script>
+      function eliminarTaller(id){
+        Swal.fire({
+          "title": "¿Deseas eliminar este taller?",
+          "text": "Una vez eliminado el taller no podrá ser restaurado.",
+          "icon": "warning",
+          "showCancelButton": true,
+          "cancelButtonText": "No, volver.",
+          "confirmButtonText": "Si, eliminar taller.",
+          "reverseButtons":true,
+          "confirmButtonColor": "#dc3545"
+        })
+        .then(function(result){
+          if(result.isConfirmed){
+            window.location.href = "eliminar_taller/"+id+"/"
+          }
+        })
+      }
+  </script>
   </body>
 </html>

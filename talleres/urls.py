@@ -3,6 +3,7 @@ from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('', index, name='index'),
@@ -10,6 +11,7 @@ urlpatterns = [
     path('registro',registro,name='registro'),
     path('login',loginIndex,name='login'),
     path('logout/', cerrar_sesion, name='logout'),
+    path('accounts/login/', loginIndex, name='login'),
     path('LogueadoTalleresUsuario',LogueadoTalleresUsuario,name='LogueadoTalleresUsuario'),
     path('InscripcionTalleresUsuario',InscripcionTalleresUsuario,name='InscripcionTalleresUsuario'),
 
@@ -22,7 +24,8 @@ urlpatterns = [
     #Crud Talleres desde la vista de los funcionarios
     path('administrarTalleresFuncionario', administrarTalleresFuncionario, name='administrarTalleresFuncionario'),
     path('crearTallerFuncionario',crearTallerFuncionario,name='crearTallerFuncionario'),
-    path('modificarTallerFuncionario',modificarTallerFuncionario,name='modificarTallerFuncionario'),
+    path('modificarTallerFuncionario/<int:taller_id>/',modificarTallerFuncionario,name='modificarTallerFuncionario'),
+    path('eliminar_taller/<int:taller_id>/', eliminar_taller, name='eliminar_taller'),
     
     #Crud Usuarios desde la vista de los funcionarios
     path('administrarUsuariosFuncionario', administrarUsuariosFuncionario, name='administrarUsuariosFuncionario'),

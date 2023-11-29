@@ -127,6 +127,8 @@ https://templatemo.com/tm-591-villa-agency
                 >
                   <h4 class="text-right">Taller</h4>
                 </div>
+                <form method="post" >
+                {% csrf_token %}
                 <div class="row mt-4">
                   <div class="col-md-12">
                     <label class="labels">Nombre Taller</label
@@ -134,6 +136,9 @@ https://templatemo.com/tm-591-villa-agency
                       type="text"
                       class="form-control"
                       placeholder="Nombre..."
+                      name="{{ form.nombre_taller.name }}" 
+                      id="nombre_taller"
+                      value="{{ taller.nombre_taller }}"
                     />
                     <br />
                   </div>
@@ -143,64 +148,69 @@ https://templatemo.com/tm-591-villa-agency
                       type="text"
                       class="form-control"
                       placeholder="Seccion..."
+                      value="{{ taller.seccion }}"
+                      name="{{ form.seccion.name }}" 
+                      id="seccion"
                     />
                     <br>
                   </div>
                   <div class="row col-md-12">
                     <label class="labels">Día taller</label>
                     <div class="col-md-4">
-                      <input type="checkbox" id="lunes" name="lunes" />
+                      <input type="checkbox" id="lunes" name="{{ form.lunes.name }}" {% if taller.lunes %}checked{% endif %}/>
                       <label for="lunes">Lunes</label>
                     </div>
                     <div class="col-md-4">
-                      <input type="checkbox" id="martes" name="martes" />
+                      <input type="checkbox" id="martes" name="{{ form.martes.name }}" {% if taller.martes %}checked{% endif %}/>
                       <label for="martes">Martes</label>
                     </div>
                     <div class="col-md-4">
-                      <input type="checkbox" id="miercoles" name="miercoles" />
+                      <input type="checkbox" id="miercoles"name="{{ form.miercoles.name }}" {% if taller.miercoles %}checked{% endif %} />
                       <label for="miercoles">Miércoles</label>
                     </div>
                     <div class="col-md-4">
-                      <input type="checkbox" id="jueves" name="jueves" />
+                      <input type="checkbox" id="jueves" name="{{ form.jueves.name }}" {% if taller.jueves %}checked{% endif %}/>
                       <label for="jueves">Jueves</label>
                     </div>
                     <div class="col-md-4">
-                      <input type="checkbox" id="viernes" name="viernes" />
+                      <input type="checkbox" id="viernes" name="{{ form.viernes.name }}" {% if taller.viernes %}checked{% endif %}/>
                       <label for="viernes">Viernes</label>
                     </div>
                     <div class="col-md-4">
-                      <input type="checkbox" id="sabado" name="sabado" />
+                      <input type="checkbox" id="sabado" name="{{ form.sabado.name }}" {% if taller.sabado %}checked{% endif %}/>
                       <label for="sabado">Sábado</label>
                     </div>
                     <br>
                   </div>
                   <div class="col-md-12">
-                    <label class="labels">Horario</label
-                    ><input type="time" class="form-control" />
-                    <br>
+                    <label class="labels">Horario Inicio</label
+                    ><input type="time" class="form-control" 
+                    name="{{ form.horario_inicio.name }}" 
+                    id="horario_inicio"
+                    value="{{ taller.horario_inicio }}"/>
+                    <br />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Horario Termino</label
+                    ><input type="time" class="form-control" 
+                    name="{{ form.horario_termino.name }}" 
+                    id="horario_termino"
+                    value="{{ taller.horario_termino }}"/>
+                    <br />
                   </div>
                 </div>
                 <div class="col-md-12">
                   <label for="selInstructorMod">Seleccionar Instructor:</label>
                   <select
-                    id="selInstructorMod"
-                    name="selInstructorMod"
+                    id="{{ form.instructor.id_for_label }}" 
+                    name="{{ form.instructor.name }}"
                     class="form-control"
                   >
                     <option value="0" selected disabled>Seleccione</option>
-                    <option value="opcion1">Instructor 1</option>
-                    <option value="opcion2">Instructor 2</option>
-                    <option value="opcion3">Instructor 3</option>
+                    {% for instructor in instructores %}
+                      <option value="{{ instructor.id }}" {% if taller.instructor_id == instructor.id %}selected{% endif %}>{{ instructor.nombre }}</option>
+                    {% endfor %}
                   </select>
-                  <br>
-                </div>
-                <div class="col-md-12">
-                  <label class="labels">Dirección</label
-                  ><input
-                    type="text"
-                    class="form-control"
-                    placeholder="Dirección..."
-                  />
                   <br>
                 </div>
 
@@ -208,11 +218,12 @@ https://templatemo.com/tm-591-villa-agency
                   <button
                     id="ModificarBtn"
                     class="btn btn-primary profile-button"
-                    type="button"
+                    type="submit"
                     enabled
                   >
                     Modificar
                   </button>
+                </form>
                 </div>
               </div>
             </div>

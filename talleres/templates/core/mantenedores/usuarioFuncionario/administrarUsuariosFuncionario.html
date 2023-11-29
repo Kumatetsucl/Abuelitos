@@ -131,13 +131,14 @@ https://templatemo.com/tm-591-villa-agency
             </tr>
           </thead>
           <tbody>
+            {% for usuario in usuarios %}
             <tr>
-              <th scope="row">1</th>
-              <td scope="col">Juan</td>
-              <td scope="col">Perez</td>
-              <td scope="col">Av. San Carlos #3216</td>
-              <td scope="col">70</td>
-              <td scope="col">+569 8765 4321</td>
+              <th scope="row">{{ usuario.id }}</th>
+              <td scope="col">{{ usuario.first_name }}</td>
+              <td scope="col">{{ usuario.last_name }}</td>
+              <td scope="col">{{ usuario.direccion }}</td>
+              <td scope="col">{{ usuario.edad }}</td>
+              <td scope="col">{{ usuario.telefono }}</td>
               <td scope="col">
                 <a href="{% url 'modificarUsuarioFuncionario' %}"
                   ><i class="fa fa-pencil" aria-hidden="true"></i
@@ -147,39 +148,7 @@ https://templatemo.com/tm-591-villa-agency
                 <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
               </td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td scope="col">Carlos</td>
-              <td scope="col">Rios</td>
-              <td scope="col">Av. San Carlos #3218</td>
-              <td scope="col">95</td>
-              <td scope="col">+569 1234 5678</td>
-              <td scope="col">
-                <a href="{% url 'modificarUsuarioFuncionario' %}"
-                  ><i class="fa fa-pencil" aria-hidden="true"></i
-                ></a>
-              </td>
-              <td scope="col">
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td scope="col">Andrea</td>
-              <td scope="col">Vargas</td>
-              <td scope="col">Av. San Carlos #3213</td>
-              <td scope="col">65</td>
-              <td scope="col">+569 1234 5678</td>
-              <td scope="col">
-                <a href="{% url 'modificarUsuarioFuncionario' %}"
-                  ><i class="fa fa-pencil" aria-hidden="true"></i
-                ></a>
-              </td>
-              <td scope="col">
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-              </td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
+            {% endfor %}
           </tbody>
         </table>
         <div></div>
