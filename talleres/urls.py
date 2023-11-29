@@ -16,6 +16,7 @@ urlpatterns = [
     path('InscripcionTalleresUsuario',InscripcionTalleresUsuario,name='InscripcionTalleresUsuario'),
 
     path('EliminarTallerUsuario',EliminarTallerUsuario,name='EliminarTallerUsuario'),
+    path('eliminar-taller-usuario/<int:taller_id>/',eliminar_taller_usuario,name='eliminar-taller-usuario'),
     path('evaluarTallerUsuario', evaluarTallerUsuario, name='evaluarTallerUsuario'),
     
     #Vista principal Funacionario

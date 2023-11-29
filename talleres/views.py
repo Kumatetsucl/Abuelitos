@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
 from .models import * 
 from datetime import date
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 
 
 # Create your views here.
@@ -55,18 +55,48 @@ def cerrar_sesion(request):
     
     return redirect('index') 
 
+@login_required
 def LogueadoTalleresUsuario(request):
-    return render(request,'core/LogueadoTalleresUsuario.html')
+    usuario = CustomUser.objects.get(id=request.user.id)
+    talleres_inscritos = usuario.talleres_inscritos.all()
+    
+    return render(request, 'core/LogueadoTalleresUsuario.html', {'talleres_inscritos': talleres_inscritos})
 
+@login_required
 def InscripcionTalleresUsuario(request):
-    return render(request,'core/InscripcionTalleresUsuario.html')
+    talleres = Tallere.objects.all()
+    if request.method == 'POST':
+        taller_id = request.POST.get('taller')
+        taller = get_object_or_404(Tallere, id=taller_id)
+        request.user.talleres_inscritos.add(taller)
+        return redirect('LogueadoTalleresUsuario')
+    else:
+        talleres = Tallere.objects.all()
+        return render(request, 'core/InscripcionTalleresUsuario.html', {'talleres': talleres})
 
+@login_required
 def muestraDatosUsuario(request):
     return render(request,'core/muestraDatosUsuario.html')
 
+@login_required
 def EliminarTallerUsuario(request):
-    return render(request, 'core/EliminarTallerUsuario.html')
+    usuario = CustomUser.objects.get(id=request.user.id)
+    talleres_inscritos = usuario.talleres_inscritos.all()
+    return render(request,'core/EliminarTallerUsuario.html', {'talleres_inscritos': talleres_inscritos})
+    
 
+@login_required
+def eliminar_taller_usuario(request, taller_id):
+    taller = get_object_or_404(Tallere, id=taller_id)
+    usuario = CustomUser.objects.get(id=request.user.id)
+    if taller in usuario.talleres_inscritos.all():
+        usuario.talleres_inscritos.remove(taller)
+        messages.success(request, 'Inscripción retirada exitosamente.')
+        return redirect('EliminarTallerUsuario')
+    else:
+        messages.error(request, 'El usuario no está inscrito en este taller.')
+
+@login_required
 def evaluarTallerUsuario(request):
     return render(request, 'core/evaluarTallerUsuario.html')
 
@@ -223,9 +253,10 @@ def inscribir(request):
     return render(request,'core/mantenedores/InscribirATaller/Inscribir.html')
 
 ####################################################################################################################
-
+@login_required
 def muestraDatosUsuario(request):
     return render(request,'core/muestraDatosUsuario.html')
 
+@user_passes_test(es_administrador)
 def muestraDatosFuncionario(request):
     return render(request,'core/muestraDatosFuncionario.html')

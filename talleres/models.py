@@ -23,7 +23,6 @@ class Instructore(models.Model):
     def __str__(self):
         return self.nombre
     
-
 class Tallere(models.Model):
     nombre_taller = models.CharField(max_length=255, null=True)
     seccion = models.CharField(max_length=255, null=True)
@@ -39,4 +38,18 @@ class Tallere(models.Model):
     
     def __str__(self):
         return self.nombre_taller
+
+#relaciones circulares ¿?
+CustomUser.add_to_class('talleres_inscritos', models.ManyToManyField('Tallere', related_name='usuarios_inscritos'))
+
+
+    
+
+
+
+    
+
+
+    
+    
     

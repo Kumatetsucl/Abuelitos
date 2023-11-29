@@ -118,25 +118,19 @@ https://templatemo.com/tm-591-villa-agency
             </tr>
           </thead>
           <tbody>
+            {% for taller in talleres_inscritos %}
             <tr>
-              <th scope="row">1</th>
-              <td>Yoga</td>
-              <td>Lunes</td>
-              <td>10:00 AM - 11:30 AM</td>
+              <th scope="row">{{ taller.id }}</th>
+              <td>{{ taller.nombre_taller }}</td>
+              <td>{% if taller.lunes %}Lunes {% endif %}
+                {% if taller.martes %}Martes {% endif %}
+                {% if taller.miercoles %}Miércoles {% endif %}
+                {% if taller.jueves %}Jueves {% endif %}
+                {% if taller.viernes %}Viernes {% endif %}
+                {% if taller.sabado %}Sábado {% endif %}</td>
+              <td>{{ taller.horario_inicio }} - {{ taller.horario_termino }}</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Pintura</td>
-              <td>Miércoles</td>
-              <td>2:00 PM - 4:00 PM</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cerámica</td>
-              <td>Viernes</td>
-              <td>3:30 PM - 5:00 PM</td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
+            {% endfor %}
           </tbody>
         </table>
         <div></div>

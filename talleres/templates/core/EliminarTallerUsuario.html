@@ -119,28 +119,20 @@ https://templatemo.com/tm-591-villa-agency
             </tr>
           </thead>
           <tbody>
+            {% for taller in talleres_inscritos %}
             <tr>
-              <th scope="row">1</th>
-              <td>Yoga</td>
-              <td>Lunes</td>
-              <td>10:00 AM - 11:30 AM</td>
-              <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i> Eliminar Taller</a></td>
+              <th scope="row">{{ taller.id }}</th>
+              <td>{{ taller.nombre_taller }}</td>
+              <td>{% if taller.lunes %}Lunes {% endif %}
+                {% if taller.martes %}Martes {% endif %}
+                {% if taller.miercoles %}Miércoles {% endif %}
+                {% if taller.jueves %}Jueves {% endif %}
+                {% if taller.viernes %}Viernes {% endif %}
+                {% if taller.sabado %}Sábado {% endif %}</td>
+              <td>{{ taller.horario_inicio }} - {{ taller.horario_termino }}</td>
+              <td><a href="#" onclick="eliminarTaller({{ taller.id }})"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar Taller</a></td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Pintura</td>
-              <td>Miércoles</td>
-              <td>2:00 PM - 4:00 PM</td>
-              <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i> Eliminar Taller</a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cerámica</td>
-              <td>Viernes</td>
-              <td>3:30 PM - 5:00 PM</td>
-              <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i> Eliminar Taller</a></td>
-            </tr>
-            <!-- Agrega más filas según sea necesario -->
+            {% endfor %}
           </tbody>
         </table>
         <div></div>
@@ -236,5 +228,37 @@ https://templatemo.com/tm-591-villa-agency
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title": "Felicitaciones",
+                    "text": "{{m}}",
+                    "icon": "success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
+
+    <script>
+      function eliminarTaller(id){
+        Swal.fire({
+          "title": "¿Deseas eliminar este inscripción?",
+          "text": "Una vez eliminada la inscripción tendrás que volver a hacerlo.",
+          "icon": "warning",
+          "showCancelButton": true,
+          "cancelButtonText": "No, volver.",
+          "confirmButtonText": "Si, eliminar inscripción.",
+          "reverseButtons":true,
+          "confirmButtonColor": "#dc3545"
+        })
+        .then(function(result){
+          if(result.isConfirmed){
+            window.location.href = "eliminar-taller-usuario/"+id+"/"
+          }
+        })
+      }
+  </script>
   </body>
 </html>

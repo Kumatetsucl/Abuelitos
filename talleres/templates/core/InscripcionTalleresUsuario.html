@@ -108,48 +108,40 @@ https://templatemo.com/tm-591-villa-agency
         <div class="container mt-5">
             <h2 class="mb-4">Formulario de Inscripción</h2>
         
-            <form>
+            <form method="post" action="{% url 'InscripcionTalleresUsuario' %}">
+              {% csrf_token %}
               <div class="mb-3">
                 <label for="taller" class="form-label">Taller:</label>
-                <select class="form-select" id="taller" name="taller" onchange="mostrarInfoTaller()" required>
+                <select class="form-select" id="{{ form.talleres.id_for_label }}"  name="taller" onchange="mostrarInfoTaller(this)" required>
                   <option value="" selected disabled>Selecciona un taller</option>
-                  <option value="yoga">Yoga</option>
-                  <option value="pintura">Pintura</option>
-                  <option value="ceramica">Cerámica</option>
+                  {% for taller in talleres %}
+                    <option value="{{ taller.id }}">{{ taller.nombre_taller }}</option>
+                  {% endfor %}
                   <!-- Agrega más opciones según sea necesario -->
                 </select>
               </div>
         
               <!-- Sección para Yoga -->
-              <div id="infoYoga" class="mb-3 d-none">
-                <h5>Información del Taller de Yoga</h5>
-                <p>Días: Lunes y Miércoles</p>
-                <p>Horario: 10:00 AM - 11:30 AM</p>
+              {% for taller in talleres %}
+              <div id="info{{ taller.id }}" class="mb-3 d-none infoTaller">
+                <h5>Información del Taller de {{ taller.nombre_taller }}</h5>
+                <p>Horario: {{ taller.horario_inicio }} - {{ taller.horario_termino }}</p>
               </div>
-        
-              <!-- Sección para Pintura -->
-              <div id="infoPintura" class="mb-3 d-none">
-                <h5>Información del Taller de Pintura</h5>
-                <p>Días: Miércoles</p>
-                <p>Horario: 2:00 PM - 4:00 PM</p>
-              </div>
-        
-              <!-- Sección para Cerámica -->
-              <div id="infoCeramica" class="mb-3 d-none">
-                <h5>Información del Taller de Cerámica</h5>
-                <p><strong>Días:</strong>Días: Viernes</p>
-                <p><strong>Horario:</strong>Horario: 3:30 PM - 5:00 PM</p>
-              </div>
+              {% endfor %}
         
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
                 <label class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
               </div>
-              <div class="icon-button">
-                <a type="button" href="{% url 'InscripcionTalleresUsuario'%}">
-                  <i class="fa fa-pencil"></i>
-                  <span style="color: #ffffff">Enviar Inscripción</span>
-                </a>
+              <div class="mt-5 text-center">
+                <button
+                  id="crearBtn"
+                  class="btn btn-primary profile-button"
+                  type="submit"
+                  enabled
+                >
+                  Enviar inscripcion
+                </button>
               </div>
             </form>
           </div>
@@ -218,6 +210,23 @@ https://templatemo.com/tm-591-villa-agency
     </button>
 
     <!-- Scripts -->
+    <script>
+    function mostrarInfoTaller(selectElement) {
+      var seleccion = selectElement.value;
+
+      // Oculta todas las secciones de información
+      var secciones = document.getElementsByClassName("infoTaller");
+      for (var i = 0; i < secciones.length; i++) {
+        secciones[i].classList.add("d-none");
+      }
+
+      // Muestra la sección de información correspondiente al taller seleccionado
+      var infoTaller = document.getElementById("info" + seleccion);
+      if (infoTaller) {
+        infoTaller.classList.remove("d-none");
+      }
+    }
+    </script>
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
