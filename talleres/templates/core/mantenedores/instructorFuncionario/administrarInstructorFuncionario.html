@@ -90,7 +90,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="icon-button">
             <a
               type="button"
-              href="{% url 'index'%}"
+              href="{% url 'logout'%}"
               style="display: inline-block"
             >
               <i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -111,7 +111,7 @@ https://templatemo.com/tm-591-villa-agency
               </a>
             </div>
             <div>
-              <h5>Hola @TontoWeon</h5>
+              <h5>Hola instructor.</h5>
             </div>
           </div>
         </nav>
@@ -242,5 +242,17 @@ https://templatemo.com/tm-591-villa-agency
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "title": "Felicitaciones",
+                    "text": "{{m}}",
+                    "icon": "success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
   </body>
 </html>

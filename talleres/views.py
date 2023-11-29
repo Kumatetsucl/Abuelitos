@@ -157,11 +157,49 @@ def administrarUsuariosFuncionario(request):
 
 @user_passes_test(es_administrador)
 def crearUsuariosFuncionario(request):
-    return render(request,'core/mantenedores/usuarioFuncionario/crearUsuariosFuncionario.html')
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False) 
+            user.username = user.email  
+            password = form.cleaned_data.get('password')
+            user.set_password(password) 
+            user.save()  
+            messages.success(request, f'¡Cuenta creada exitosamente!')
+            return redirect('administrarUsuariosFuncionario') 
+    else:
+        form = UserForm()
+    return render(request, 'core/mantenedores/usuarioFuncionario/crearUsuariosFuncionario.html', {'form': form})
 
 @user_passes_test(es_administrador)
-def modificarUsuarioFuncionario(request):
-    return render(request,'core/mantenedores/usuarioFuncionario/modificarUsuarioFuncionario.html')
+def modificarUsuarioFuncionario(request, usuario_id):
+    usuario = get_object_or_404(CustomUser, id=usuario_id)
+    if request.method == 'POST':
+        formulario = UserForm(request.POST, instance=usuario)
+        if formulario.is_valid():
+            usuario = formulario.save(commit=False)
+            nueva_contrasena = formulario.cleaned_data.get('password')
+            if nueva_contrasena:
+                usuario.set_password(nueva_contrasena)
+            usuario.save()
+            messages.success(request, 'Usuario modificado exitosamente.')
+            return redirect('administrarUsuariosFuncionario')
+        else:
+            errors = dict((field, errors[0]) for field, errors in formulario.errors.items())
+            print(errors)
+    else:
+        formulario = UserForm(instance=usuario)
+        
+    return render(request, 'core/mantenedores/usuarioFuncionario/modificarUsuarioFuncionario.html', {'form': formulario, 'usuario': usuario})
+
+@user_passes_test(es_administrador)
+def eliminar_usuario(request, usuario_id):
+    usuario = get_object_or_404(CustomUser, id=usuario_id)
+    usuario.delete()
+    # Puedes agregar un mensaje de éxito si lo deseas
+    messages.success(request, 'Usuario eliminado exitosamente.')
+    return redirect('administrarUsuariosFuncionario')
+
 
 ####################################################################################################################
 
@@ -180,7 +218,7 @@ def modificarInstructorFuncionario(request):
 
 ####################################################################################################################
 
-# Inscribir a taller vista Funcionario
+@user_passes_test(es_administrador)
 def inscribir(request):
     return render(request,'core/mantenedores/InscribirATaller/Inscribir.html')
 

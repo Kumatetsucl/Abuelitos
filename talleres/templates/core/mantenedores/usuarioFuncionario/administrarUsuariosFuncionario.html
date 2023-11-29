@@ -90,7 +90,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="icon-button">
             <a
               type="button"
-              href="{% url 'index'%}"
+              href="{% url 'logout'%}"
               style="display: inline-block"
             >
               <i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -111,7 +111,7 @@ https://templatemo.com/tm-591-villa-agency
               </a>
             </div>
             <div>
-              <h5>Hola @TontoWeon</h5>
+              <h5>Hola instructor.</h5>
             </div>
           </div>
         </nav>
@@ -140,12 +140,12 @@ https://templatemo.com/tm-591-villa-agency
               <td scope="col">{{ usuario.edad }}</td>
               <td scope="col">{{ usuario.telefono }}</td>
               <td scope="col">
-                <a href="{% url 'modificarUsuarioFuncionario' %}"
+                <a href="{% url 'modificarUsuarioFuncionario' usuario.id %}"
                   ><i class="fa fa-pencil" aria-hidden="true"></i
                 ></a>
               </td>
               <td scope="col">
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="#" onclick="eliminarUsuario({{ usuario.id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
               </td>
             </tr>
             {% endfor %}
@@ -244,5 +244,37 @@ https://templatemo.com/tm-591-villa-agency
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      {% if messages %}
+          {% for m in messages %}
+              <script>
+                  Swal.fire({
+                      "title": "Felicitaciones",
+                      "text": "{{m}}",
+                      "icon": "success"
+                  })
+              </script>
+          {% endfor %}
+      {% endif %}
+
+    <script>
+      function eliminarUsuario(id){
+        Swal.fire({
+          "title": "¿Deseas eliminar este usuario?",
+          "text": "Una vez eliminado el usuario no podrá ser restaurado.",
+          "icon": "warning",
+          "showCancelButton": true,
+          "cancelButtonText": "No, volver.",
+          "confirmButtonText": "Si, eliminar usuario.",
+          "reverseButtons":true,
+          "confirmButtonColor": "#dc3545"
+        })
+        .then(function(result){
+          if(result.isConfirmed){
+            window.location.href = "eliminar_usuario/"+id+"/"
+          }
+        })
+      }
+    </script>
   </body>
 </html>

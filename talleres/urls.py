@@ -30,7 +30,8 @@ urlpatterns = [
     #Crud Usuarios desde la vista de los funcionarios
     path('administrarUsuariosFuncionario', administrarUsuariosFuncionario, name='administrarUsuariosFuncionario'),
     path('crearUsuariosFuncionario',crearUsuariosFuncionario,name='crearUsuariosFuncionario'),
-    path('modificarUsuarioFuncionario',modificarUsuarioFuncionario,name='modificarUsuarioFuncionario'),
+    path('modificarUsuarioFuncionario/<int:usuario_id>/',modificarUsuarioFuncionario,name='modificarUsuarioFuncionario'),
+    path('eliminar_usuario/<int:usuario_id>/', eliminar_usuario, name='eliminar_usuario'),
     
     #Crud Instructor desde la vista de los funcionarios
     path('administrarInstructorFuncionario', administrarInstructorFuncionario, name='administrarInstructorFuncionario'),

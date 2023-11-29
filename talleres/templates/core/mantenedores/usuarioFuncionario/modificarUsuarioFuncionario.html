@@ -93,7 +93,7 @@ https://templatemo.com/tm-591-villa-agency
           <div class="icon-button">
             <a
               type="button"
-              href="{% url 'index'%}"
+              href="{% url 'logout'%}"
               style="display: inline-block"
             >
               <i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -114,12 +114,12 @@ https://templatemo.com/tm-591-villa-agency
               </a>
             </div>
             <div>
-              <h5>Hola @TontoWeon</h5>
+              <h5>Hola instructor.</h5>
             </div>
           </div>
         </nav>
 
-        <h4 style="margin: 3%">Modificar Usuario</h4>
+        <h4 style="margin: 3%">Crear Usuario</h4>
         <div class="container rounded bg-white">
           <div class="row">
             <div class="col-md-5 border-right">
@@ -129,6 +129,8 @@ https://templatemo.com/tm-591-villa-agency
                 >
                   <h4 class="text-right">Usuario</h4>
                 </div>
+                <form method="post">
+                {% csrf_token %}
                 <div class="row mt-2">
                   <div class="col-md-6">
                     <label class="labels">Nombre</label
@@ -136,6 +138,9 @@ https://templatemo.com/tm-591-villa-agency
                       type="text"
                       class="form-control"
                       placeholder="Nombre..."
+                      name="{{ form.first_name.name }}" 
+                      id="first_name"
+                      value="{{ usuario.first_name }}"
                     />
                   </div>
                   <div class="col-md-6">
@@ -143,7 +148,10 @@ https://templatemo.com/tm-591-villa-agency
                     ><input
                       type="text"
                       class="form-control"
+                      name="{{ form.last_name.name }}" 
+                      id="last_name"
                       placeholder="Apellido..."
+                      value="{{ usuario.last_name }}"
                     />
                   </div>
                 </div>
@@ -154,6 +162,9 @@ https://templatemo.com/tm-591-villa-agency
                       type="text"
                       class="form-control"
                       placeholder="Telefono..."
+                      name="{{ form.telefono.name }}" 
+                      id="telefono"
+                      value="{{ usuario.telefono }}"
                     />
                   </div>
                   <div class="col-md-12">
@@ -162,7 +173,26 @@ https://templatemo.com/tm-591-villa-agency
                       type="text"
                       class="form-control"
                       placeholder="Dirección..."
+                      name="{{ form.direccion.name }}" 
+                      id="direccion"
+                      value="{{ usuario.direccion }}"
                     />
+                  </div>
+                  <div class="form-group">
+                    <span>Fecha de Nacimiento</span>
+                    {% if usuario.fecha_nacimiento %}
+                    {% with usuario.fecha_nacimiento|date:"Y-m-d" as fecha_nacimiento_formatted %}
+                        <input
+                            type="date"
+                            class="form-control item"
+                            name="{{ form.fecha_nacimiento.name }}"
+                            id="fecha_nacimiento"
+                            placeholder="Fecha de Nacimiento..."
+                            value="{{ fecha_nacimiento_formatted }}"
+                            required
+                        />
+                      {% endwith %}
+                    {% endif %}
                   </div>
                   <div class="col-md-12">
                     <label class="labels">Correo Electrónico</label
@@ -170,43 +200,37 @@ https://templatemo.com/tm-591-villa-agency
                       type="text"
                       class="form-control"
                       placeholder="Correo Electrónico..."
+                      name="{{ form.email.name }}" 
+                      value="{{ usuario.email }}"
+                      id="email"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Contraseña</label
+                    ><input
+                      type="password"
+                      class="form-control"
+                      name="{{ form.password.name }}" 
+                      id="password"
+                      value="{{ usuario.password }}"
+                      placeholder="*********"
                     />
                   </div>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-md-6">
-                    <label for="nacionalidad">Nacionalidad:</label>
-                    <select
-                      id="nacionalidad"
-                      name="nacionalidad"
-                      class="form-control"
-                    >
-                      <option value="0" disabled selected>Seleccione</option>
-                      <option value="opcion1">Chile</option>
-                      <option value="opcion2">Repartidor Rappi</option>
-                      <option value="opcion3">otro</option>
-                    </select>
+
                   </div>
 
-                  <div class="col-md-6">
-                    <label for="genero">Género:</label>
-                    <select id="genero" name="genero" class="form-control">
-                      <option value="0" disabled selected>Seleccione</option>
-                      <option value="masculino">Masculino</option>
-                      <option value="femenino">Femenino</option>
-                      <option value="otro">36 tipos de gays</option>
-                    </select>
-                  </div>
                 </div>
                 <div class="mt-5 text-center">
                   <button
-                    id="modificarUsuarioBtn"
+                    id="crearUsuarioBtn"
                     class="btn btn-primary profile-button"
-                    type="button"
+                    type="submit"
                   >
                     Modificar Usuario
                   </button>
                 </div>
+              </form>
               </div>
             </div>
           </div>
